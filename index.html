@@ -175,7 +175,9 @@ button:active {
 .prototype-actions {
   display: flex;
   align-items: center;
-  gap: var(--space-6);
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0 var(--space-6);
   margin-left: auto;
 }
 .prototype-actions a {
@@ -288,7 +290,7 @@ nav .active {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-6);
-  margin: var(--space-4) 0 var(--space-3);
+  margin: var(--space-4) 0 var(--space-8);
 }
 .title-row p {
   margin-top: var(--space-1);
@@ -325,29 +327,6 @@ nav .active {
 .location-context:hover {
   background: white;
 }
-.search-modes {
-  display: flex;
-  gap: var(--space-6);
-  margin-bottom: var(--space-10);
-  flex-wrap: wrap;
-}
-.search-modes button {
-  border: 0;
-  border-bottom: 2px solid transparent;
-  padding: var(--space-1) 0;
-  background: none;
-  font-size: 14px;
-  min-height: 40px;
-  color: #45534b;
-}
-.search-modes button[aria-pressed=true] {
-  border-color: var(--teal);
-  color: var(--teal);
-  font-weight: 600;
-}
-.search-modes button:hover {
-  color: var(--teal);
-}
 #search-form {
   display: flex;
   gap: var(--space-4);
@@ -356,6 +335,28 @@ nav .active {
   padding: var(--space-2) var(--space-4) var(--space-2) var(--space-6);
   align-items: center;
   position: relative;
+}
+.search-location {
+  flex: 0 0 230px;
+  min-width: 0;
+  min-height: 56px;
+  border: 0;
+  border-left: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  padding: var(--space-1) var(--space-4);
+}
+.search-location strong {
+  font-size: 14px;
+}
+.search-support {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-3);
+}
+.search-support .text-button {
+  min-height: 36px;
+  font-size: 13px;
 }
 .search-input-wrap {
   flex: 1;
@@ -630,19 +631,9 @@ select,.select-button {
   line-height: 1.7;
   margin-top: 0;
 }
-.filter-foot {
-  margin: var(--space-1) 0 var(--space-5);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--line);
-}
-.filter-foot h3 {
-  font-size: 13px;
-  font-weight: 500;
-}
-.filter-foot p {
-  font-size: 12px;
-  margin: var(--space-2) 0;
-}
+
+
+
 .result-toolbar {
   display: flex;
   align-items: center;
@@ -1443,9 +1434,7 @@ body.modal-fallback::before {
   .filter-body p {
     grid-column: 1 / -1;
   }
-  .filter-foot {
-    grid-column: 1 / -1;
-  }
+
   .mobile-filters {
     display: inline-flex;
     min-height: 40px;
@@ -1522,7 +1511,7 @@ body.modal-fallback::before {
     min-height: 44px;
   }
   .prototype-actions {
-    gap: var(--space-4);
+    gap: 0 var(--space-3);
   }
   .header-inner {
     min-height: 60px;
@@ -1573,17 +1562,6 @@ body.modal-fallback::before {
   }
   .location-context .chevron {
     width: 16px;
-  }
-  .search-modes {
-    gap: var(--space-1) var(--space-4);
-    justify-content: flex-start;
-    margin-bottom: var(--space-6);
-  }
-  .search-modes button {
-    font-size: 12px;
-    min-height: 40px;
-    white-space: normal;
-    text-align: left;
   }
   .search-band {
     padding-bottom: var(--space-6);
@@ -2335,11 +2313,48 @@ body.modal-fallback::before {
   .clinic-dialog .location-filters {display:none}
   .location-page-title,.location-exterior {grid-column:auto;grid-row:auto}
 }
+
+/* Unified provider query: optional origin stays in the same search form. */
+@media(max-width:850px) {
+  #search-form {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) auto;
+    gap: var(--space-3);
+    border-radius: 20px;
+    padding: var(--space-4);
+  }
+  .search-input-wrap {
+    grid-column: 1 / -1;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: var(--space-3);
+  }
+  .search-location {
+    width: 100%;
+    min-height: 52px;
+    padding: 0;
+    border: 0;
+    gap: var(--space-2);
+  }
+  .search-location span {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .search-support .text-button { min-height: 44px; }
+}
+@media(max-width:580px) {
+  .title-row { margin-bottom: var(--space-6); }
+  .search-location strong { font-size: 12px; }
+  .search-location svg { display: none; }
+  .search-location .chevron { display: block; }
+  #query::placeholder { font-size: 13px; }
+}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to provider search</a>
-<div class="prototype-bar"><div class="frame"><span>Interactive concept <span class="prototype-detail">· Sample results & distances</span></span><div class="prototype-actions"><a href="Altru-UX-Approach-Guide.pdf" target="_blank" rel="noopener">UX guide (PDF)<span class="sr-only"> — opens in a new tab</span></a><button data-action="guide">Try the journeys <span aria-hidden="true">↗</span></button></div></div></div>
+<div class="prototype-bar"><div class="frame"><span>Interactive concept <span class="prototype-detail">· Sample results & distances</span></span><div class="prototype-actions"><a href="Altru-UX-Executive-Brief.pdf" target="_blank" rel="noopener">Executive brief<span class="sr-only"> (PDF, opens in a new tab)</span></a><a href="Altru-UX-Approach-Guide.pdf" target="_blank" rel="noopener">UX guide<span class="sr-only"> (PDF, opens in a new tab)</span></a><button data-action="guide">Try the journeys <span aria-hidden="true">↗</span></button></div></div></div>
 <header class="site-header"><div class="frame header-inner">
   <a href="#" data-action="home" class="logo"><img src="data:image/png;base64,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" alt="Altru home" width="183" height="52"></a>
   <div class="header-right" id="site-navigation"><div class="utility"><a href="https://www.altru.org/" target="_blank" rel="noopener">Home</a><a href="https://www.altru.org/careers" target="_blank" rel="noopener">Careers</a><a href="https://mychart.altru.org/myhealth/" target="_blank" rel="noopener" class="mychart">MyChart Login <span aria-hidden="true">↗</span></a></div>
@@ -2350,9 +2365,10 @@ body.modal-fallback::before {
 <main id="main"><div id="provider-surface">
 <div class="search-band"><div class="frame">
   <div class="breadcrumb"><a href="https://www.altru.org/" target="_blank" rel="noopener">Home</a><span aria-hidden="true">/</span><span>Find a Provider</span></div>
-  <div class="title-row"><div><h1>Find a Provider</h1><p>Find the care you need, wherever you need it.</p></div><button class="location-context" data-action="origin"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Your location<strong id="origin-label">Choose city or ZIP</strong></span><svg viewBox="0 0 24 24" class="chevron"><path d="m7 10 5 5 5-5"/></svg></button></div>
-  <div class="search-modes" role="group" aria-label="How would you like to search?"><button data-mode="care" aria-pressed="true">Find care</button><button data-mode="name" aria-pressed="false">I know my provider</button><button data-action="locations">Find my clinic</button></div>
-  <form id="search-form" role="search" autocomplete="off"><div class="search-input-wrap"><label for="query" id="query-label">Specialty, service, or provider name</label><div class="query-line"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="query" type="search" placeholder="Try primary care, heart, or a name" role="combobox" aria-autocomplete="list" aria-haspopup="listbox" aria-controls="suggestions" aria-expanded="false" maxlength="100" dir="auto" spellcheck="false"><button type="button" id="clear-query" class="icon-button" aria-label="Clear search" hidden>×</button></div><div id="suggestions" class="suggestions" role="listbox" aria-label="Search suggestions" hidden></div></div><button class="primary search-button" type="submit">Search <svg viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></button></form>
+  <div class="title-row"><div><h1>Find a Provider</h1><p>Find the care you need, wherever you need it.</p></div></div>
+
+  <form id="search-form" role="search" autocomplete="off"><div class="search-input-wrap"><label for="query" id="query-label">Provider name, specialty, or clinic</label><div class="query-line"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="query" type="search" placeholder="Try Amundson, heart care, or a clinic" role="combobox" aria-autocomplete="list" aria-haspopup="listbox" aria-controls="suggestions" aria-expanded="false" maxlength="100" dir="auto" spellcheck="false"><button type="button" id="clear-query" class="icon-button" aria-label="Clear search" hidden>×</button></div><div id="suggestions" class="suggestions" role="listbox" aria-label="Search suggestions" hidden></div></div><button type="button" class="location-context search-location" data-action="origin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>City or ZIP (optional)<strong id="origin-label">All communities</strong></span><svg viewBox="0 0 24 24" aria-hidden="true" class="chevron"><path d="m7 10 5 5 5-5"/></svg></button><button class="primary search-button" type="submit">Search <svg viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></button></form>
+  <div class="search-support"><button class="text-button" data-action="locations">Find a clinic or hospital <span aria-hidden="true">→</span></button></div>
 </div></div>
 <div class="frame results-frame" id="results-top">
   <div class="results-header">
@@ -2365,7 +2381,7 @@ body.modal-fallback::before {
     <div class="filter-field"><label for="radius">Distance from your location</label><select id="radius"><option value="all">Any distance</option><option value="25">Within 25 miles</option><option value="50">Within 50 miles</option><option value="100">Within 100 miles</option></select><p class="field-help" id="radius-help">Choose your location to use distance.</p></div>
     <div class="filter-field"><label for="specialty">Specialty or service</label><select id="specialty"><option value="all">All specialties</option></select></div>
     <div class="filter-field"><label for="facility">Clinic or hospital</label><button class="select-button" id="facility" data-action="locations"><span>All locations</span><svg viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></svg></button></div>
-    <div class="filter-foot"><h3>Already know your doctor?</h3><p>Search their name across all Altru communities.</p><button class="text-button" data-action="name-mode">Search by name <span aria-hidden="true">→</span></button></div>
+
   </div></aside>
   <div class="result-content" id="results-panel" role="region" aria-labelledby="result-heading">
     <div id="service-return" class="service-return" hidden></div><div class="result-toolbar"><div><h2 id="result-heading" tabindex="-1">Providers across Altru</h2><p id="result-subtitle"></p></div><div class="toolbar-controls"><button class="secondary mobile-filters" data-action="filters" aria-expanded="false" aria-controls="filters">Filters</button><label class="sort-label">Sort by<select id="sort"><option value="name">Name A–Z</option><option value="distance">Distance</option></select></label></div></div>
@@ -2457,7 +2473,17 @@ const SearchText = (() => {
       .slice(0, maxLength).join('').trim();
   }
 
-  return Object.freeze({ normalize, matches, matchesService, cleanInput });
+  function nameMatchScore(name, query) {
+    const key = normalize(query);
+    if (!key) return 0;
+    const full = normalize(name);
+    const display = normalize(String(name ?? '').split(',')[0]);
+    if (key === full || key === display) return 4;
+    if ((' ' + full + ' ').includes(' ' + key + ' ')) return 3;
+    return full.includes(key) ? 1 : 0;
+  }
+
+  return Object.freeze({ normalize, matches, matchesService, cleanInput, nameMatchScore });
 })();
 
 if (typeof module !== 'undefined' && module.exports) module.exports = SearchText;
@@ -2537,7 +2563,7 @@ if(typeof module!=='undefined'&&module.exports)module.exports=LocationCatalog;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const norm=SearchText.normalize;
-const state={q:'',origin:null,area:'all',radius:'all',specialty:'all',facility:null,view:'providers',mode:'care',sort:'name',showFar:false};
+const state={q:'',origin:null,area:'all',radius:'all',specialty:'all',facility:null,view:'providers',sort:'name',showFar:false};
 let clinicArea='all',clinicQuery='',lastFocus=null,suggestionIndex=-1,isComposing=false;
 let fallbackHidden=[];
 const loc=id=>locations.find(l=>l.id===id);
@@ -2548,31 +2574,36 @@ function photo(p){return p.photo?`<img class="provider-photo" src="${assetURLs[p
 function pLocations(p,selected=state.facility){return ServiceCatalog.orderLocations(p,locations,state.origin,selected);}
 function distance(p){return state.origin?pLocations(p)[0].distance[state.origin]:Infinity;}
 function serviceMatches(s,q){return SearchText.matchesService(s,q);}
-function queryMatches(p){if(!state.q)return true;if(!norm(state.q))return false;if(state.mode==='name')return SearchText.matches(p.name,state.q);return SearchText.matches(p.name,state.q)||serviceMatches(svc(p.service),state.q)||p.locations.some(id=>{const l=loc(id);return SearchText.matches(l.name+' '+l.city+(l.area==='new'?' new region former clinic':''),state.q);});}
-function matchingProviders(){return providers.filter(p=>queryMatches(p)&&(state.specialty==='all'||p.service===state.specialty)&&(!state.facility||p.locations.includes(state.facility))).sort((a,b)=>state.sort==='distance'&&state.origin?distance(a)-distance(b)||a.last.localeCompare(b.last):a.last.localeCompare(b.last));}
+function queryMatches(p){if(!state.q)return true;if(!norm(state.q))return false;return SearchText.matches(p.name,state.q)||serviceMatches(svc(p.service),state.q)||p.locations.some(id=>{const l=loc(id);return SearchText.matches(l.name+' '+l.city+(l.area==='new'?' new region former clinic':''),state.q);});}
+function matchingProviders(){return providers.filter(p=>queryMatches(p)&&(state.specialty==='all'||p.service===state.specialty)&&(!state.facility||p.locations.includes(state.facility))).sort((a,b)=>SearchText.nameMatchScore(b.name,state.q)-SearchText.nameMatchScore(a.name,state.q)||(state.sort==='distance'&&state.origin?distance(a)-distance(b):0)||a.last.localeCompare(b.last));}
 function card(p){const ls=pLocations(p),l=ls[0],s=svc(p.service);return `<article class="provider-card">${photo(p)}<div class="provider-info"><h3><button class="name-link" data-profile="${p.id}">${esc(p.name)}</button></h3><p class="specialty">${esc(s.specialty)}</p><div class="location-line">${icon('pin')}<div><a class="care-location-link" href="#locations/${l.id}">${esc(l.name)}</a><p>${esc(l.city)}</p></div></div>${ls.length>1?`<button class="text-button more-locations" data-profile="${p.id}">+ ${ls.length-1} other ${ls.length===2?'location':'locations'}</button>`:''}<span class="region-label">${l.area==='new'?'New region · demonstration':'Grand Forks area'}</span></div><div class="provider-actions"><button class="secondary" data-profile="${p.id}" aria-label="View profile for ${esc(p.name)}">View profile</button>${state.origin?`<div class="distance-wrap"><p class="distance">${l.distance[state.origin]} <span>miles</span></p><small class="distance-caption">from ${esc(origins[state.origin].short)}<br>Illustrative distance</small></div>`:''}</div></article>`;}
 function chip(label,key){return `<button class="filter-chip" data-remove="${key}"><bdi dir="auto">${esc(label)}</bdi> ${icon('close')}<span class="sr-only">Remove filter</span></button>`;}
 function render(){
  const ps=matchingProviders();$('#clear-query').hidden=!$('#query').value;
- $('#origin-label').textContent=state.origin?origins[state.origin].name:'Choose city or ZIP';$('#area').value=state.area;$('#radius').value=state.radius;$('#radius').disabled=!state.origin;$('#radius-help').textContent=state.origin?'Distances are illustrative for this concept.':'Choose your location to use distance.';$('#specialty').value=state.specialty;$('#facility span').textContent=state.facility?loc(state.facility).name:'All locations';$('#sort').value=state.sort;$('#sort option[value=distance]').disabled=!state.origin;
+ $('#origin-label').textContent=state.origin?origins[state.origin].name:'All communities';$('#area').value=state.area;$('#radius').value=state.radius;$('#radius').disabled=!state.origin;$('#radius-help').textContent=state.origin?'Distances are illustrative for this concept.':'Choose your location to use distance.';$('#specialty').value=state.specialty;$('#facility span').textContent=state.facility?loc(state.facility).name:'All locations';$('#sort').value=state.sort;$('#sort option[value=distance]').disabled=!state.origin;
  $('#provider-count').textContent=ps.length;
- $('#result-heading').textContent=state.facility?'Providers at '+loc(state.facility).name:state.mode==='name'?'Find your provider':state.origin?`Providers near ${origins[state.origin].short}`:'Providers across Altru';
+ $('#result-heading').textContent=state.facility?'Providers at '+loc(state.facility).name:state.origin?`Providers near ${origins[state.origin].short}`:'Providers across Altru';
  $('#result-subtitle').innerHTML=`${ps.length} matching ${ps.length===1?'provider':'providers'}${state.q?' for “<bdi dir="auto">'+esc(state.q)+'</bdi>”':''}${state.origin?' · all communities searchable':''}`;
- $('#context-note').innerHTML=state.origin?`<span>Showing care from <strong>${esc(origins[state.origin].short)}</strong>. Nearby matching providers come first.</span><button data-action="origin">Change location <span aria-hidden="true">→</span></button>`:'<span>Looking for care in our new communities?</span><button data-action="new-region">Explore the new region <span aria-hidden="true">→</span></button>';
+ $('#context-note').innerHTML=state.origin?`<span>Showing care from <strong>${esc(origins[state.origin].short)}</strong>. All Altru communities stay searchable.</span><button data-action="origin">Change location <span aria-hidden="true">→</span></button>`:'<span>Looking for care in our new communities?</span><button data-action="new-region">Explore the new region <span aria-hidden="true">→</span></button>';
  const chips=[];if(state.q)chips.push(chip(state.q,'q'));if(state.area!=='all')chips.push(chip((state.area==='new'?'New region':'Grand Forks')+' first','area'));if(state.radius!=='all')chips.push(chip('Within '+state.radius+' miles','radius'));if(state.specialty!=='all')chips.push(chip(svc(state.specialty).name,'specialty'));if(state.facility)chips.push(chip(loc(state.facility).name,'facility'));$('#active-filters').innerHTML=chips.join('');
  let content='',msg='';
+ const named=state.q?ps.filter(p=>SearchText.nameMatchScore(p.name,state.q)>0):[];
+ const remaining=ps.filter(p=>!named.includes(p));
  if(!ps.length)content=empty();
- else if(state.origin){
-  const limit=state.radius==='all'?100:Number(state.radius);const near=ps.filter(p=>distance(p)<=limit),far=ps.filter(p=>distance(p)>limit);
+ else {
+ if(named.length)content+='<div class="section-label"><span>Matching provider names</span><small>Across Altru communities</small></div>'+named.map(card).join('');
+ if(state.origin){
+  const limit=state.radius==='all'?100:Number(state.radius);const near=remaining.filter(p=>distance(p)<=limit),far=remaining.filter(p=>distance(p)>limit);
   if(near.length){content+=`<div class="section-label"><span>${state.radius==='all'?'Closer to you':'Within '+state.radius+' miles'}</span><small>${near.length} ${near.length===1?'provider':'providers'}</small></div>`+near.map(card).join('');}
-  if(!near.length&&far.length){msg=`<strong>Matching care may mean traveling.</strong><p>No providers match this sample search within ${limit} miles of ${esc(origins[state.origin].short)}. Here are matching providers farther away. Your location has been kept.</p>`;}
+  if(!near.length&&far.length&&!named.some(p=>distance(p)<=limit)){msg=`<strong>Matching care may mean traveling.</strong><p>No providers match this sample search within ${limit} miles of ${esc(origins[state.origin].short)}. Here are matching providers farther away. Your location has been kept.</p>`;}
   if(far.length){if(near.length&&state.radius!=='all'&&!state.showFar){content+=`<div class="empty-state"><h3>More matching care, farther away</h3><p>${far.length} ${far.length===1?'provider matches':'providers match'} outside ${state.radius} miles. Some services are offered in another community.</p><button class="secondary" data-action="show-far">Show ${far.length} farther away</button></div>`;}else{content+=`<div class="section-label"><span>Farther away</span><small>${far.length} ${far.length===1?'provider':'providers'}</small></div>`+far.map(card).join('');}}
- }else content=ps.map(card).join('');
+ }else content+=remaining.map(card).join('');
+ }
  $('#search-message').hidden=!msg;$('#search-message').innerHTML=msg;$('#results').innerHTML=content;$('#end-count').textContent=`${ps.length} ${ps.length===1?'provider':'providers'} in this demonstration`;
  $('#announcer').textContent=ps.length+' matching '+(ps.length===1?'provider':'providers');
  if(typeof ServiceUX!=='undefined')ServiceUX.syncLocation();
 }
-function empty(){return `<div class="empty-state"><h3>No matches in this sample</h3><p>Try a provider’s name, another service, or remove a clinic filter. You can search across all communities.</p><div class="empty-actions"><button class="secondary" data-action="clear-all">Clear search & filters</button><button class="text-button" data-action="services">Browse services →</button></div></div>`;}
+function empty(){const filtered=state.specialty!=='all'||state.facility||state.area!=='all'||state.radius!=='all';return `<div class="empty-state"><h3>No matches in this sample</h3><p>${filtered?'Your filters may be limiting this search. Search all Altru providers while keeping your query and starting location.':'Try a provider’s name, specialty or clinic. This concept contains a small sample roster.'}</p><div class="empty-actions">${filtered?'<button class="secondary" data-action="widen-search">Search all Altru providers</button>':''}<button class="${filtered?'text-button':'secondary'}" data-action="clear-all">Clear search & filters</button><button class="text-button" data-action="services">Browse services →</button></div></div>`;}
 function restoreModalFocus(){
  if($('#modal').hasAttribute('open'))return;
  const target=lastFocus&&lastFocus.isConnected&&!lastFocus.disabled&&lastFocus.getClientRects().length?lastFocus:($('#service-surface:not([hidden]) h1')||$('#result-heading'));
@@ -2611,9 +2642,8 @@ function selectLocation(id){if(!loc(id))return;closeModal();ServiceUX.go('provid
 function profile(id,contextLocation=null){const p=providers.find(p=>p.id===id);if(!p)return;const selected=p.locations.includes(contextLocation)?contextLocation:p.locations.includes(state.facility)?state.facility:null;const s=svc(p.service),ls=pLocations(p,selected);showModal(`<div class="profile-top">${photo(p)}<div><h2 id="modal-title">${esc(p.name)}</h2><p>${esc(s.specialty)}</p><span class="mini-sample">${p.sample?'Illustrative provider for this concept':'Provider name, photo & specialty from Altru.org'}</span></div></div><div class="profile-section"><h3>Care locations</h3><p class="modal-intro">${state.origin?'Your location: '+esc(origins[state.origin].short)+'. '+(selected?'Your selected care location is shown first.':'The closest matching location is shown first.'):'Choose your location to see distances.'}</p>${ls.map((l,i)=>`<div class="profile-location${i===0?' current':''}"><div><a class="care-location-link" href="#locations/${l.id}">${esc(l.name)}</a><p>${esc(l.city)}</p>${l.address?`<p>${esc(l.address)}</p>`:''}${i===0?'<span class="matched-location">'+(selected?'Your selected location':state.origin?'Closest location for this provider':'Care location')+'</span>':''}</div>${state.origin?`<div><p class="distance">${l.distance[state.origin]} <span>miles</span></p><span class="distance-caption">Illustrative distance</span></div>`:''}</div>`).join('')}</div><div class="profile-section"><h3>Related service</h3><button class="text-button" data-service="${s.id}">${esc(s.name)} · see where care is offered →</button></div><div class="profile-callout">Appointments continue through Altru’s existing MyChart experience. This concept focuses on finding providers and services.</div><div class="modal-actions">${p.source?`<a class="text-link" href="${p.source}" target="_blank" rel="noopener">Open current Altru profile ↗</a>`:''}<button class="text-button" data-action="close">${typeof ServiceUX!=='undefined'&&!ServiceUX.isDirectory()?'Back to care details':'Back to search results'}</button></div>`);}
 function serviceDetail(id){if(!svc(id))return;closeModal();ServiceUX.go('services/'+id);}
 function guide(){showModal(`<h2 id="modal-title">Try the search journeys</h2><p class="modal-intro">Click a starting point, then explore the results. Everything updates in place.</p><div class="journey"><div><h3>Find care close to home</h3><p>Primary care in the new region, with distance from a sample starting point.</p></div><button class="secondary" data-journey="nearby">Try it →</button></div><div class="journey"><div><h3>Find a doctor you know</h3><p>Look up Matthew Amundson across the entire system.</p></div><button class="secondary" data-journey="known">Try it →</button></div><div class="journey"><div><h3>Care that’s farther away</h3><p>Search cancer care from the new region. See matching care in Grand Forks.</p></div><button class="secondary" data-journey="far">Try it →</button></div><div class="journey"><div><h3>Find a familiar clinic</h3><p>Browse the 3 hospitals and 13 clinics in the anonymous new region.</p></div><button class="secondary" data-journey="clinic">Try it →</button></div><div class="journey"><div><h3>Start with a service</h3><p>Explore Heart & Vascular care, compare local offerings, then meet the care team.</p></div><button class="secondary" data-journey="service">Try it →</button></div><p class="modal-note">New doctors, new facilities, distances and service coverage are demonstration data. Scheduling remains in MyChart.</p>`);}
-function notes(){showModal(`<h2 id="modal-title">About this concept</h2><p class="modal-intro">A clickable exploration of provider and service discovery within Altru’s existing theme.</p><ul class="notes-list"><li><strong>Location prioritizes; it does not trap.</strong> Nearby providers come first. A matching service in another community stays discoverable.</li><li><strong>Three ways in.</strong> Find care by service, search a known provider, or choose a familiar clinic.</li><li><strong>Service and provider stay connected.</strong> A service shows care locations and matching providers, with your location retained.</li><li><strong>Availability stays quiet.</strong> No appointment slots, new-patient promises, or booking workflow. MyChart continues as today.</li><li><strong>Acquisition kept anonymous.</strong> The new region contains 1 major hospital, 2 smaller hospitals and 13 clinics. New names, coverage and distances are illustrative.</li></ul><h3 class="note-heading">Source & review boundary</h3><p class="modal-note">Based on the October 15 and October 22 Altru calls and the current <a href="https://www.altru.org/find-a-provider" target="_blank" rel="noopener">Altru provider directory</a>. Provider and service records in this prototype are a small demonstration set. Altru must validate the actual roster, specialty synonyms and service-to-facility relationships before implementation. This does not test the current search engine or claim to fix its missing-provider issue.</p><div class="modal-actions"><button class="primary" data-action="guide">Try the journeys</button><button class="text-button" data-action="close">Back to search</button></div>`);}
-function mode(value){state.mode=value;if(value==='name'){state.specialty='all';state.facility=null;state.radius='all';state.showFar=false;}document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===value)));$('#query-label').textContent=value==='name'?'Provider’s first or last name':'Specialty, service, or provider name';$('#query').placeholder=value==='name'?'Try Matthew or Amundson':'Try primary care, heart, or a name';}
-function clearAll(){Object.assign(state,{q:'',area:'all',radius:'all',specialty:'all',facility:null,showFar:false,view:'providers',mode:'care',sort:state.origin?'distance':'name'});$('#query').value='';mode('care');hideSuggestions();render();}
+function notes(){showModal(`<h2 id="modal-title">About this concept</h2><p class="modal-intro">A clickable exploration of provider and service discovery within Altru’s existing theme.</p><ul class="notes-list"><li><strong>Location prioritizes; it does not trap.</strong> Nearby providers come first. A matching service in another community stays discoverable.</li><li><strong>One provider search.</strong> Enter a name, specialty or clinic without selecting a search mode. Use Services to understand care, or the clinic finder to explore a place.</li><li><strong>Service and provider stay connected.</strong> A service shows care locations and matching providers, with your location retained.</li><li><strong>Availability stays quiet.</strong> No appointment slots, new-patient promises, or booking workflow. MyChart continues as today.</li><li><strong>Acquisition kept anonymous.</strong> The new region contains 1 major hospital, 2 smaller hospitals and 13 clinics. New names, coverage and distances are illustrative.</li></ul><h3 class="note-heading">Source & review boundary</h3><p class="modal-note">Based on the October 15 and October 22 Altru calls and the current <a href="https://www.altru.org/find-a-provider" target="_blank" rel="noopener">Altru provider directory</a>. Provider and service records in this prototype are a small demonstration set. Altru must validate the actual roster, specialty synonyms and service-to-facility relationships before implementation. This does not test the current search engine or claim to fix its missing-provider issue.</p><div class="modal-actions"><button class="primary" data-action="guide">Try the journeys</button><button class="text-button" data-action="close">Back to search</button></div>`);}
+function clearAll(){Object.assign(state,{q:'',area:'all',radius:'all',specialty:'all',facility:null,showFar:false,view:'providers',sort:state.origin?'distance':'name'});$('#query').value='';hideSuggestions();render();}
 function query(value){state.q=SearchText.cleanInput(value);$('#query').value=state.q;$('#clear-query').hidden=!state.q;state.showFar=false;hideSuggestions();render();}
 function hideSuggestions(){$('#suggestions').hidden=true;$('#query').setAttribute('aria-expanded','false');$('#query').removeAttribute('aria-activedescendant');suggestionIndex=-1;}
 function setSuggestion(index){
@@ -2626,15 +2656,15 @@ function setSuggestion(index){
 function suggestions(){
  const q=SearchText.cleanInput($('#query').value);$('#clear-query').hidden=!q;
  if(isComposing||Array.from(norm(q)).length<2){hideSuggestions();return;}
- const st=state.mode==='name'?[]:services.filter(s=>serviceMatches(s,q)).slice(0,3);
- const pr=providers.filter(p=>SearchText.matches(p.name,q)).slice(0,3);
- const ls=state.mode==='name'?[]:locations.filter(l=>SearchText.matches(l.name,q)).slice(0,2);
+ const st=services.filter(s=>serviceMatches(s,q)).slice(0,3);
+ const pr=providers.filter(p=>SearchText.nameMatchScore(p.name,q)>0).sort((a,b)=>SearchText.nameMatchScore(b.name,q)-SearchText.nameMatchScore(a.name,q)||a.last.localeCompare(b.last)).slice(0,3);
+ const ls=locations.filter(l=>SearchText.matches(l.name,q)).slice(0,2);
  let index=0;
  const option=(attrs,label,detail)=>`<button type="button" role="option" aria-selected="false" tabindex="-1" id="suggestion-${index++}" ${attrs}><span>${esc(label)}</span><small>${esc(detail)} →</small></button>`;
  let html='';
- if(st.length)html+='<div role="group" aria-labelledby="suggestion-services"><p class="suggestion-title" id="suggestion-services">Services</p>'+st.map(s=>option(`data-suggest-service="${s.id}"`,s.name,'Explore service')).join('')+'</div>';
- if(pr.length)html+='<div role="group" aria-labelledby="suggestion-providers"><p class="suggestion-title" id="suggestion-providers">Providers</p>'+pr.map(p=>option(`data-suggest-name="${p.id}"`,p.name,svc(p.service).name)).join('')+'</div>';
- if(ls.length)html+='<div role="group" aria-labelledby="suggestion-locations"><p class="suggestion-title" id="suggestion-locations">Locations</p>'+ls.map(l=>option(`data-location="${l.id}"`,l.name,l.area==='new'?'New region · demo':'Grand Forks')).join('')+'</div>';
+  if(pr.length)html+='<div role="group" aria-labelledby="suggestion-providers"><p class="suggestion-title" id="suggestion-providers">Providers</p>'+pr.map(p=>option(`data-suggest-name="${p.id}"`,p.name,svc(p.service).specialty+' · '+pLocations(p)[0].name)).join('')+'</div>';
+ if(st.length)html+='<div role="group" aria-labelledby="suggestion-specialties"><p class="suggestion-title" id="suggestion-specialties">Specialties</p>'+st.map(s=>option(`data-suggest-specialty="${s.id}"`,s.name,'Find providers')).join('')+'</div>';
+ if(ls.length)html+='<div role="group" aria-labelledby="suggestion-locations"><p class="suggestion-title" id="suggestion-locations">Clinics & hospitals</p>'+ls.map(l=>option(`data-location="${l.id}"`,l.name,(l.area==='new'?'New region · demo':'Grand Forks')+' · View providers')).join('')+'</div>';
  if(!html){hideSuggestions();return;}
  $('#suggestions').innerHTML=html;$('#suggestions').hidden=false;$('#query').setAttribute('aria-expanded','true');$('#query').removeAttribute('aria-activedescendant');suggestionIndex=-1;
 }
@@ -2649,16 +2679,15 @@ function setMenuOpen(open,restore=false){
  const toggle=$('[data-action="mobile-menu"]');toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');
  if(restore)toggle.focus({preventScroll:true});
 }
-function journey(value){clearAll();if(value!=='service')ServiceUX.go('providers');if(value==='nearby'){setOrigin('new');query('Primary care');}if(value==='known'){setOrigin('new');mode('name');query('Amundson');}if(value==='far'){setOrigin('new');query('Cancer care');}if(value==='clinic'){setOrigin('new');locationsModal();return;}if(value==='service'){setOrigin('new');closeModal();ServiceUX.go('services/heart');return;}closeModal();render();$('#results-top').scrollIntoView({block:'start'});}
+function journey(value){clearAll();if(value!=='service')ServiceUX.go('providers');if(value==='nearby'){setOrigin('new');query('Primary care');}if(value==='known'){setOrigin('new');query('Amundson');}if(value==='far'){setOrigin('new');query('Cancer care');}if(value==='clinic'){setOrigin('new');locationsModal();return;}if(value==='service'){setOrigin('new');closeModal();ServiceUX.go('services/heart');return;}closeModal();render();$('#results-top').scrollIntoView({block:'start'});}
 document.addEventListener('click',e=>{
  const b=e.target.closest('button,a');if(!b){if(!e.target.closest('#search-form'))hideSuggestions();return;}
  if(b.dataset.serviceAll){state.facility=null;render();serviceDetail(b.dataset.serviceAll);return;}if(b.dataset.profile){profile(b.dataset.profile,b.dataset.profileLocation||null);return;}if(b.dataset.service){serviceDetail(b.dataset.service);return;}if(b.dataset.location){e.preventDefault();selectLocation(b.dataset.location);hideSuggestions();return;}if(b.dataset.origin){setOrigin(b.dataset.origin);return;}if(b.dataset.clinicArea){clinicArea=b.dataset.clinicArea;renderClinicList();return;}if(b.dataset.journey){journey(b.dataset.journey);return;}
  if(b.dataset.serviceProviders){state.specialty=b.dataset.serviceProviders;state.q='';$('#query').value='';state.view='providers';state.showFar=false;closeModal();render();return;}
- if(b.dataset.suggestService){hideSuggestions();ServiceUX.go('services/'+b.dataset.suggestService);return;}if(b.dataset.suggestName){mode('name');state.view='providers';query(providers.find(p=>p.id===b.dataset.suggestName).name);return;}
- if(b.dataset.mode){mode(b.dataset.mode);state.q='';$('#query').value='';$('#query').focus();render();return;}if(b.dataset.search){state.view='providers';mode('care');state.specialty='all';state.facility=null;query(b.dataset.search);return;}
+ if(b.dataset.suggestSpecialty){state.specialty=b.dataset.suggestSpecialty;query('');return;}if(b.dataset.suggestName){state.view='providers';query(providers.find(p=>p.id===b.dataset.suggestName).name);return;}
  if(b.dataset.remove){const key=b.dataset.remove;if(!['q','area','radius','specialty','facility'].includes(key))return;state[key]=key==='facility'?null:key==='q'?'':'all';if(key==='q'){$('#query').value='';$('#clear-query').hidden=true;}state.showFar=false;render();return;}
  const action=b.dataset.action;if(!action)return;e.preventDefault();
- if(action==='close')closeModal();if(action==='origin')originModal();if(action==='locations')locationsModal();if(action==='new-region'){setOrigin('new');render();}if(action==='all-locations')setOrigin(null);if(action==='clear-facility'){state.facility=null;closeModal();render();}if(action==='clear-all'||action==='home'){clearAll();if(action==='home')window.scrollTo({top:0});}if(action==='name-mode'){mode('name');state.q='';$('#query').value='';render();$('#query').focus();}if(action==='show-far'){state.showFar=true;render();}if(action==='guide')guide();if(action==='notes')notes();if(action==='services')ServiceUX.go('services');if(action==='providers'){state.view='providers';render();}if(action==='filters')setFiltersOpen(!$('#filters').classList.contains('open'),true);if(action==='close-filters')setFiltersOpen(false,true);if(action==='mobile-menu')setMenuOpen(!$('.header-inner').classList.contains('nav-open'));
+ if(action==='close')closeModal();if(action==='origin')originModal();if(action==='locations')locationsModal();if(action==='new-region'){setOrigin('new');render();}if(action==='all-locations')setOrigin(null);if(action==='clear-facility'){state.facility=null;closeModal();render();}if(action==='clear-all'||action==='home'){clearAll();if(action==='home')window.scrollTo({top:0});}if(action==='widen-search'){state.area='all';state.radius='all';state.specialty='all';state.facility=null;state.showFar=true;render();$('#result-heading').focus({preventScroll:true});}if(action==='show-far'){state.showFar=true;render();}if(action==='guide')guide();if(action==='notes')notes();if(action==='services')ServiceUX.go('services');if(action==='providers'){state.view='providers';render();}if(action==='filters')setFiltersOpen(!$('#filters').classList.contains('open'),true);if(action==='close-filters')setFiltersOpen(false,true);if(action==='mobile-menu')setMenuOpen(!$('.header-inner').classList.contains('nav-open'));
  if(!e.target.closest('#search-form'))hideSuggestions();
 });
 $('#search-form').addEventListener('submit',e=>{e.preventDefault();if(!isComposing)query($('#query').value);});
@@ -2880,7 +2909,7 @@ var ServiceUX = (() => {
     document.querySelector('.skip').textContent=directory?'Skip to provider search':'Skip to main content';
     if(directory){
       const service=svc(current.service),facility=loc(current.location);
-      if(service||facility){clearAll();state.specialty=service?.id||'all';state.facility=facility?.id||null;state.mode='care';mode('care');}
+      if(service||facility){clearAll();state.specialty=service?.id||'all';state.facility=facility?.id||null;}
       state.view='providers';render();
       $('#service-return').hidden=!service&&!facility;
       $('#service-return').innerHTML=service?`<a href="${service.id==='heart'&&ServiceCatalog.getOffering(facility?.id)?offeringHref(facility.id):serviceHref(service.id)}">← Back to ${esc(service.id==='heart'&&facility?'heart care at '+facility.name:title(service.id))}</a>`:facility?`<a href="#locations/${facility.id}">← Back to ${esc(facility.name)}</a>`:'';

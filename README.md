@@ -1,11 +1,13 @@
 # Altru UX preview
 
-Clickable provider, service and location discovery concept prepared by Specbee for Altru.
+Provider, service and location discovery concept prepared by Specbee for Altru.
 
-Live preview: https://jimbarnthouse-psf.github.io/altru-ux-preview/
+- [Clickable mockup](https://jimbarnthouse-psf.github.io/altru-ux-preview/)
+- [Executive brief - one page, PDF](https://jimbarnthouse-psf.github.io/altru-ux-preview/Altru-UX-Executive-Brief.pdf)
+- [Illustrated UX guide - eleven pages, PDF](https://jimbarnthouse-psf.github.io/altru-ux-preview/Altru-UX-Approach-Guide.pdf)
 
-Illustrated UX guide (PDF): https://jimbarnthouse-psf.github.io/altru-ux-preview/Altru-UX-Approach-Guide.pdf
+The unified provider search accepts a name, specialty or clinic, with an optional city/ZIP selector. Services and the clinic finder remain connected experiences.
 
-The incoming region and its providers remain anonymous or fictional. Care offerings, provider relationships and distances are illustrative. Google Maps features require internet access. Appointment booking remains in MyChart.
+The incoming region and its providers remain anonymous or fictional. Care offerings, provider relationships and distances are illustrative. This prototype uses local sample search logic; Altru's production TruSearch configuration still requires validation. Appointment booking remains in MyChart. Google Maps requires internet access.
 
-The site is a standalone HTML file with embedded styles, fonts, photos and JavaScript. GitHub Pages publishes `index.html` from the `main` branch root.
+GitHub Pages publishes the standalone HTML and review PDFs from the main branch root.
