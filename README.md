@@ -6,7 +6,7 @@ Provider, service and location discovery concept prepared by Specbee for Altru.
 - [Executive brief - one page, PDF](https://jimbarnthouse-psf.github.io/altru-ux-preview/Altru-UX-Executive-Brief.pdf)
 - [Illustrated UX guide - eleven pages, PDF](https://jimbarnthouse-psf.github.io/altru-ux-preview/Altru-UX-Approach-Guide.pdf)
 
-The unified provider search accepts a name, specialty or clinic, with an optional city/ZIP selector. Services and the clinic finder remain connected experiences.
+The unified provider search accepts a name, specialty or clinic, with an optional city/ZIP selector. Services and the clinic finder remain connected experiences. The Heart & Vascular page groups each location with its available care and delivery details, with care definitions beside the chooser and local pages linked to their provider teams.
 
 The incoming region and its providers remain anonymous or fictional. Care offerings, provider relationships and distances are illustrative. This prototype uses local sample search logic; Altru's production TruSearch configuration still requires validation. Appointment booking remains in MyChart. Google Maps requires internet access.
 
