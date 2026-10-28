@@ -913,6 +913,6 @@
   return {path,index:Math.min(Number.isFinite(number)?number-1:0,path.steps.length),invalid:false};
  }
  const reviewURL=(id,index=0)=>'?path='+encodeURIComponent(id)+'&step='+(index+1);
- const api={paths,readReviewState,reviewURL,revision:'e147cc294bff'};
+ const api={paths,readReviewState,reviewURL,revision:'8d83432a6da3'};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.AltruJourneys=api;
 })(typeof window!=='undefined'?window:this);
