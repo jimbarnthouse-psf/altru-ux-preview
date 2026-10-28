@@ -1,0 +1,21 @@
+/* Frozen Altru scenes. No application scripts or live forms are shipped here. */
+html{scroll-behavior:auto;scrollbar-color:#9ab9b1 #f5f9f3;scrollbar-width:thin}
+body.static-preview{padding-bottom:32px}
+.static-preview .site-header:not(:has(#services-menu)){display:none}
+.static-preview a:not([data-guide-next]),.static-preview button:disabled,.static-preview input:disabled,.static-preview select:disabled{cursor:default;opacity:1;-webkit-text-fill-color:currentColor}
+.static-preview a:not([data-guide-next]){pointer-events:none}
+.static-preview button:disabled,.static-preview input:disabled,.static-preview select:disabled{pointer-events:none}
+.static-preview input:disabled,.static-preview select:disabled{color:var(--ink)}
+.static-preview [data-guide-next]{outline:3px solid var(--teal);outline-offset:4px;cursor:pointer;text-decoration:none;scroll-margin:28px;min-height:44px}
+.static-preview [data-guide-next]:hover{outline-color:var(--teal-dark);text-decoration:underline}
+.static-preview [data-guide-next]:focus-visible{outline:3px solid var(--teal-dark);outline-offset:6px}
+.static-preview [data-review-focus],.static-preview [data-review-compact-focus]{scroll-margin:28px}
+.static-select{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:44px;border:1px solid var(--line);border-radius:7px;padding:8px 12px;background:white;color:var(--ink);font-size:14px}
+.static-select:after{content:'';width:8px;height:8px;border:solid var(--teal);border-width:0 1.7px 1.7px 0;transform:rotate(45deg);margin-right:4px}
+.static-modal-scene{background:var(--sage-light)}
+.static-modal-scene #modal[open],.static-modal-scene #modal.clinic-dialog{display:block;position:relative;inset:auto;margin:24px auto;max-height:none;height:auto;overflow:visible;box-shadow:none}
+.static-modal-scene .clinic-browser .location-list{max-height:none;overflow:visible}
+.static-map{min-height:240px;background:var(--sage);padding:32px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:12px;color:var(--teal)}
+.static-map svg{width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:1.7}
+.static-map p{max-width:32ch;font-size:13px;color:var(--muted);margin:0}
+@media(max-width:580px){.static-modal-scene #modal[open]{margin:16px auto}.static-select{font-size:16px}.static-map{min-height:200px;padding:24px}}
