@@ -297,8 +297,8 @@
   "group": "Find a provider",
   "title": "Find a provider from a service page",
   "goal": "I know the type of care I need and want to find its providers.",
-  "outcome": "A service entrance supports learning first, with optional routes to people and places when the visitor is ready.",
-  "question": "Can a visitor understand the service before following its provider results, profile and practice location?",
+  "outcome": "Services leads to Heart & Vascular Care, its overview and Find a provider, ending on matching heart-care providers. Exploring clinical topics remains optional.",
+  "question": "Can a visitor understand the service and reach matching providers directly, with clinical-topic exploration optional?",
   "related": [
    "topic",
    "offerings",
@@ -333,22 +333,10 @@
    },
    {
     "title": "Read the heart-care overview",
-    "note": "The shared service page introduces prevention, diagnosis, treatment and recovery before asking the visitor to choose a person or place.",
-    "short": "The shared service page introduces prevention, diagnosis, treatment and recovery before asking the visitor to choose a person or place.",
+    "note": "The visitor reads the shared introduction to heart care. Clinical topics are available for optional exploration; they can choose Find a provider directly from this overview when ready.",
+    "short": "The visitor reads the shared introduction to heart care. Clinical topics are available for optional exploration; they can choose Find a provider directly from this overview when ready.",
     "screen": "learn-3",
-    "try": "Reads the shared heart-care introduction.",
-    "demo": {
-     "page": "services/heart",
-     "origin": null,
-     "kind": "read"
-    }
-   },
-   {
-    "title": "Explore the breadth of heart care",
-    "note": "The visitor scrolls through the clinical topics to understand the service before choosing a care team.",
-    "short": "The visitor scrolls through the clinical topics to understand the service before choosing a care team.",
-    "screen": "learn-4",
-    "try": "Scrolls through the heart-care topics.",
+    "try": "Reads the heart-care overview.",
     "demo": {
      "page": "services/heart",
      "origin": null,
@@ -357,9 +345,9 @@
    },
    {
     "title": "Find providers for this service",
-    "note": "The visitor returns to the service page’s Find a provider action. This carries the heart-care specialty into the provider finder.",
-    "short": "The visitor returns to the service page’s Find a provider action. This carries the heart-care specialty into the provider finder.",
-    "screen": "learn-5",
+    "note": "The visitor selects Find a provider beside the overview. This carries the heart-care specialty into the provider finder without a clinical-topic detour.",
+    "short": "The visitor selects Find a provider beside the overview. This carries the heart-care specialty into the provider finder without a clinical-topic detour.",
+    "screen": "learn-4",
     "try": "Selects Find a provider.",
     "demo": {
      "page": "services/heart",
@@ -369,39 +357,13 @@
     }
    },
    {
-    "title": "Open a heart-care provider",
-    "note": "The matching team is shown. The visitor selects Rabeea Aboufakher’s View profile action, rather than jumping directly into a profile.",
-    "short": "The matching team is shown. The visitor selects Rabeea Aboufakher’s View profile action, rather than jumping directly into a profile.",
-    "screen": "learn-6",
-    "try": "Selects View profile for Rabeea Aboufakher, MD.",
+    "title": "View the matching heart-care providers",
+    "note": "The provider finder opens with Heart care already selected. The visitor can review and choose a provider here; this guided journey ends at the matching results.",
+    "short": "The provider finder opens with Heart care already selected. The visitor can review and choose a provider here; this guided journey ends at the matching results.",
+    "screen": "learn-5",
+    "try": "Reviews providers for Heart & Vascular Care.",
     "demo": {
      "page": "providers?service=heart",
-     "origin": null,
-     "kind": "click",
-     "value": ""
-    }
-   },
-   {
-    "title": "Choose the provider’s practice location",
-    "note": "The profile connects the selected cardiology provider with Altru Hospital. The visitor follows its location link.",
-    "short": "The profile connects the selected cardiology provider with Altru Hospital. The visitor follows its location link.",
-    "screen": "learn-7",
-    "try": "Selects Altru Hospital.",
-    "demo": {
-     "page": "providers?service=heart:profile:rabeea",
-     "origin": null,
-     "kind": "click",
-     "value": ""
-    }
-   },
-   {
-    "title": "Review the hospital details",
-    "note": "The hospital page gives practical place information and links to services and providers. Provider presence alone does not establish procedure availability.",
-    "short": "The hospital page gives practical place information and links to services and providers. Provider presence alone does not establish procedure availability.",
-    "screen": "learn-8",
-    "try": "Reads the chosen hospital’s location details.",
-    "demo": {
-     "page": "locations/gf-hospital",
      "origin": null,
      "kind": "read"
     }
@@ -784,6 +746,6 @@
   return {path,index:Math.min(Number.isFinite(number)?number-1:0,path.steps.length),invalid:false};
  }
  const reviewURL=(id,index=0)=>'?path='+encodeURIComponent(id)+'&step='+(index+1);
- const api={paths,readReviewState,reviewURL,revision:'80c7895446fe'};
+ const api={paths,readReviewState,reviewURL,revision:'59179883b470'};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.AltruJourneys=api;
 })(typeof window!=='undefined'?window:this);
