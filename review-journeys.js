@@ -283,7 +283,7 @@
   "title": "Find a provider from a service page",
   "goal": "I know the type of care I need and want to find its providers.",
   "outcome": "A service entrance supports learning first, with optional routes to people and places when the visitor is ready.",
-  "question": "Can someone explain the service and find a useful next topic without choosing a location?",
+  "question": "Can a visitor understand the service before following its provider results, profile and practice location?",
   "related": [
    "topic",
    "offerings",
@@ -969,6 +969,6 @@
   return {path,index:Math.min(Number.isFinite(number)?number-1:0,path.steps.length),invalid:false};
  }
  const reviewURL=(id,index=0)=>'?path='+encodeURIComponent(id)+'&step='+(index+1);
- const api={paths,readReviewState,reviewURL,revision:'c7bd0f535fde'};
+ const api={paths,readReviewState,reviewURL,revision:'3e7448333395'};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.AltruJourneys=api;
 })(typeof window!=='undefined'?window:this);
