@@ -120,7 +120,7 @@
  function showStep(){
   clock.cancel();hideCursor();clearTimeout(loadTimer);controls(true);phase='ready';$('#preview-status').hidden=false;$('#preview-error').hidden=true;$('#handoff-status').hidden=true;
   const step=current.path.steps[current.index];tour.dataset.step=String(current.index+1);tour.dataset.path=current.path.id;tour.dataset.ready='false';
-  $('#site-address').textContent=step.demo.kind==='reference'?'altru.org / Cardiac Electrophysiology':'Altru concept · '+(step.demo.page.startsWith('services/')?'Heart & Vascular Care':step.demo.page.startsWith('locations/')?'Location details':'Find a Provider');
+  $('#site-address').textContent=step.demo.kind==='reference'?'altru.org / Cardiac Electrophysiology':'Altru concept · '+(step.demo.page.startsWith('home')?'Home':step.demo.page.startsWith('services/')?'Heart & Vascular Care':step.demo.page.startsWith('locations/')?'Location details':'Find a Provider');
   frame.src=new URL('review-scenes/'+step.screen+'.html?v='+revision,document.baseURI).href;loadTimer=setTimeout(failure,10000);
  }
  frame.addEventListener('load',()=>{
@@ -129,6 +129,8 @@
    const doc=frame.contentDocument,step=current.path.steps[current.index];if(!doc||!frame.contentWindow.location.pathname.endsWith('/'+step.screen+'.html'))return;
    if(!doc.querySelector('[data-review-focus]')){failure();return;}
    doc.addEventListener('click',event=>{const link=event.target.closest('a[data-guide-next]');if(!link)return;event.preventDefault();go(current.path.id,current.index+1,false);});
+   const choice=doc.querySelector('select[data-demo-action]');
+   if(choice){choice.disabled=false;choice.removeAttribute('tabindex');choice.addEventListener('change',()=>{if(choice.value===step.demo.value)go(current.path.id,current.index+1,false);});}
    const menuButton=doc.querySelector('[data-guide-menu]');
    if(phone&&menuButton){
     menuButton.disabled=false;menuButton.removeAttribute('tabindex');
