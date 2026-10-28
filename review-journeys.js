@@ -16,8 +16,8 @@
   "steps": [
    {
     "title": "Open the Services menu",
-    "note": "The visitor starts in the main navigation. On a phone, the demo opens the navigation before selecting Services.",
-    "short": "The visitor starts in the main navigation. On a phone, the demo opens the navigation before selecting Services.",
+    "note": "The visitor selects Services in the website’s main navigation. On a phone, they first open the website menu.",
+    "short": "The visitor selects Services in the website’s main navigation. On a phone, they first open the website menu.",
     "screen": "learn-1",
     "try": "Selects Services.",
     "demo": {
@@ -98,10 +98,34 @@
   ],
   "steps": [
    {
-    "title": "Arrive directly on a service page",
-    "note": "A service page can be a visitor’s first entrance from search, a referral or a shared link. Its context should make sense without a prior visit to provider search.",
-    "short": "A service page should make sense as a visitor’s first entrance.",
+    "title": "Open the Services menu",
+    "note": "The visitor selects Services in the website’s main navigation. On a phone, they first open the website menu.",
+    "short": "The visitor selects Services in the website’s main navigation. On a phone, they first open the website menu.",
     "screen": "topic-1",
+    "try": "Selects Services.",
+    "demo": {
+     "page": "provider",
+     "kind": "click",
+     "value": ""
+    }
+   },
+   {
+    "title": "Choose Heart & Vascular Care",
+    "note": "The open Services menu offers a direct route to the shared service page. A provider search or location choice is not required.",
+    "short": "The open Services menu offers a direct route to the shared service page. A provider search or location choice is not required.",
+    "screen": "topic-2",
+    "try": "Selects Heart & Vascular Care.",
+    "demo": {
+     "page": "provider",
+     "kind": "click",
+     "value": ""
+    }
+   },
+   {
+    "title": "Arrive on Heart & Vascular Care",
+    "note": "After choosing Heart & Vascular Care from the website’s Services menu, the visitor reads the shared service introduction before exploring a specific condition or treatment.",
+    "short": "Read the heart-care overview after entering through the website’s Services menu.",
+    "screen": "topic-3",
     "try": "Reads this part of the page before continuing.",
     "demo": {
      "page": "services/heart",
@@ -110,9 +134,9 @@
    },
    {
     "title": "Find the topic that matches the concern",
-    "note": "Heart rhythm care connects a familiar concern with electrophysiology. On the full site, this learning link would open detailed clinical information on Altru.org rather than filter clinicians.",
-    "short": "Use a familiar concern to lead to detailed clinical information.",
-    "screen": "topic-2",
+    "note": "The visitor selects Heart rhythm care to read the existing clinical information on Altru.org. Learning about a condition or treatment does not require choosing a provider or location.",
+    "short": "Choose Heart rhythm care to read the existing clinical information.",
+    "screen": "topic-4",
     "try": "Selects Heart rhythm care (Altru.org, opens in a new tab).",
     "demo": {
      "page": "services/heart",
@@ -123,25 +147,14 @@
    },
    {
     "title": "Read the existing Altru clinical page",
-    "note": "The visitor’s clinical link opens detailed information on Altru.org in a separate tab. This is a captured view of the existing page; closing the tab returns to the shared service page.",
-    "short": "The visitor’s clinical link opens detailed information on Altru.org in a separate tab. This is a captured view of the existing page; closing the tab returns to the shared service page.",
-    "screen": "topic-3",
-    "try": "Reads the clinical page, then closes its tab to return.",
+    "note": "The visitor selects Heart rhythm care and reaches the existing electrophysiology information on Altru.org. This journey ends at the clinical information destination.",
+    "short": "The visitor selects Heart rhythm care and reaches the existing electrophysiology information on Altru.org. This journey ends at the clinical information destination.",
+    "screen": "topic-5",
+    "try": "Reads the existing Altru clinical information.",
     "demo": {
      "page": "reference:ep",
      "reference": "ep",
      "kind": "reference"
-    }
-   },
-   {
-    "title": "Return with a useful next step",
-    "note": "After reading the clinical page, the visitor returns to the shared service overview to continue learning or find a provider.",
-    "short": "Return from the clinical detail to the shared service context.",
-    "screen": "topic-4",
-    "try": "Reads this part of the page before continuing.",
-    "demo": {
-     "page": "services/heart",
-     "kind": "read"
     }
    }
   ]
@@ -161,8 +174,8 @@
   "steps": [
    {
     "title": "Open the Services menu",
-    "note": "The visitor starts in the main navigation. On a phone, the demo opens the navigation before selecting Services.",
-    "short": "The visitor starts in the main navigation. On a phone, the demo opens the navigation before selecting Services.",
+    "note": "The visitor selects Services in the website’s main navigation. On a phone, they first open the website menu.",
+    "short": "The visitor selects Services in the website’s main navigation. On a phone, they first open the website menu.",
     "screen": "evaluate-1",
     "try": "Selects Services.",
     "demo": {
@@ -478,8 +491,8 @@
   "steps": [
    {
     "title": "Open the Services menu",
-    "note": "The visitor starts in the main navigation. On a phone, the demo opens the navigation before selecting Services.",
-    "short": "The visitor starts in the main navigation. On a phone, the demo opens the navigation before selecting Services.",
+    "note": "The visitor selects Services in the website’s main navigation. On a phone, they first open the website menu.",
+    "short": "The visitor selects Services in the website’s main navigation. On a phone, they first open the website menu.",
     "screen": "offerings-1",
     "try": "Selects Services.",
     "demo": {
@@ -597,8 +610,8 @@
   "steps": [
    {
     "title": "Open the Services menu",
-    "note": "The visitor starts in the main navigation. On a phone, the demo opens the navigation before selecting Services.",
-    "short": "The visitor starts in the main navigation. On a phone, the demo opens the navigation before selecting Services.",
+    "note": "The visitor selects Services in the website’s main navigation. On a phone, they first open the website menu.",
+    "short": "The visitor selects Services in the website’s main navigation. On a phone, they first open the website menu.",
     "screen": "farther-1",
     "try": "Selects Services.",
     "demo": {
@@ -706,7 +719,7 @@
   "steps": [
    {
     "title": "Open Locations from the site menu",
-    "note": "The visitor selects Locations in the main navigation. On a phone, the demo first opens the navigation menu.",
+    "note": "The visitor selects Locations in the website’s main navigation. On a phone, they first open the website menu.",
     "short": "Start with the actual Locations link in the site navigation.",
     "screen": "place-1",
     "try": "Selects Locations.",
@@ -750,27 +763,27 @@
     }
    },
    {
-    "title": "Get useful location details",
-    "note": "The location page connects Getting Here, About, Services and Providers. In the full experience, a verified public address leads to Google Maps. Here, the guidance link advances to the return point.",
-    "short": "Connect a verified address with directions in the full experience.",
+    "title": "Review services at this location",
+    "note": "The visitor reads the clinic’s services and connected providers before leaving the site for directions. The clinic identity and chosen starting location stay available.",
+    "short": "Review local services and providers before getting directions.",
     "screen": "place-4",
+    "try": "Reads this part of the page before continuing.",
+    "demo": {
+     "page": "locations/gf-family",
+     "kind": "read"
+    }
+   },
+   {
+    "title": "Get directions when ready",
+    "note": "The visitor returns to the location heading and selects Get directions. A verified public address is handed to Google Maps; this journey ends at that outbound action.",
+    "short": "Select Get directions on the clinic page to continue to Google Maps.",
+    "screen": "place-5",
     "try": "Selects Get directions.",
     "demo": {
      "page": "locations/gf-family",
      "handoff": "Google Maps directions",
      "kind": "click",
      "value": ""
-    }
-   },
-   {
-    "title": "Keep the concept available",
-    "note": "After checking directions, the visitor can return to the location page. Its service and provider relationships remain available. This prepared screen illustrates the return point without starting an appointment flow.",
-    "short": "Keep services and providers available after checking directions.",
-    "screen": "place-5",
-    "try": "Reads this part of the page before continuing.",
-    "demo": {
-     "page": "locations/gf-family",
-     "kind": "read"
     }
    }
   ]
@@ -913,6 +926,6 @@
   return {path,index:Math.min(Number.isFinite(number)?number-1:0,path.steps.length),invalid:false};
  }
  const reviewURL=(id,index=0)=>'?path='+encodeURIComponent(id)+'&step='+(index+1);
- const api={paths,readReviewState,reviewURL,revision:'8d83432a6da3'};
+ const api={paths,readReviewState,reviewURL,revision:'3c8e69a08e53'};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.AltruJourneys=api;
 })(typeof window!=='undefined'?window:this);

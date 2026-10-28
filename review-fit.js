@@ -9,6 +9,19 @@
   return {width:contentWidth,height:contentHeight,scale,left:(width-contentWidth*scale)/2,top:(height-contentHeight*scale)/2};
  }
  function targetPoint(rect){return {x:rect.left+Math.min(rect.width*.56,Math.max(12,rect.width-12)),y:rect.top+Math.min(rect.height*.55,Math.max(8,rect.height-8))};}
+ function createPlaybackState(){
+  let mode='paused';
+  return {
+   get mode(){return mode;},get isPlaying(){return mode!=='paused';},
+   transition(action){
+    if(action==='toggle')mode=mode==='paused'?'journey':'paused';
+    else if(action==='replay')mode='step';
+    else if(action==='continue')mode=mode==='journey'?'journey':'paused';
+    else mode='paused';
+    return mode;
+   }
+  };
+ }
  function createClock(requestFrame,canRun){
   let generation=0;
   return {
@@ -24,6 +37,6 @@
    });}
   };
  }
- const api={fitViewport,targetPoint,createClock};
+ const api={fitViewport,targetPoint,createClock,createPlaybackState};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.AltruReviewFit=api;
 })(typeof window!=='undefined'?window:this);
