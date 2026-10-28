@@ -109,7 +109,7 @@
     if(!await hold(900,token)||!await clickAt(options.querySelector('[data-demo-choice]'),token))return;
     target.value=demo.value;options.hidden=true;
    }else if(!await hold(750,token)||!await clickAt(target,token))return;
-   if(demo.handoff){$('#handoff-status').textContent=demo.handoff+' opens in a new tab';$('#handoff-status').hidden=false;if(!await hold(1800,token))return;}
+   if(demo.handoff){$('#handoff-status').textContent=demo.handoff==='Phone call'?'The website would open your calling app. This review does not place a call.':demo.handoff+' opens in a new tab';$('#handoff-status').hidden=false;if(!await hold(1800,token))return;}
    if(!await hold(1000,token))return;
   }
   if(token===clock.token&&playback.isPlaying)go(current.path.id,current.index+1,false,true);

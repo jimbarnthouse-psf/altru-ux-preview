@@ -17,6 +17,12 @@ body[data-demo-page=reference]{background:#fff}.reference-screen,.reference-scre
 .demo-home-copy strong{display:block;color:#47752b;font-weight:600}
 .demo-home-copy span{display:block}
 .service-jump .frame{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.ip-estimate-label{display:block;margin-top:4px;font-size:12px;line-height:1.5;color:var(--teal)}
+.profile-contact{padding:24px 0}
+.profile-contact h3{margin:0 0 8px;font-size:20px;line-height:1.4}
+.profile-contact p{margin:0 0 16px;line-height:1.5}
+.profile-contact .provider-phone{display:inline-flex;align-items:center;min-height:48px;font-size:20px;font-weight:600;white-space:normal}
+.profile-contact .phone-source-note{margin:12px 0 0;font-size:12px;color:#405b54}
 @media(max-width:600px){.demo-home-hero{min-height:calc(100dvh - 60px)}.demo-home-photo{object-position:44% center}.demo-home-copy{margin:0 24px;max-width:270px}.demo-home-copy h1{font-size:38px}}
 @media(max-width:600px){.demo-modal #modal[open]{max-height:calc(100dvh - 24px)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

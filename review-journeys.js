@@ -5,9 +5,9 @@
   "id": "known",
   "group": "Find a provider",
   "title": "Find a doctor you know",
-  "goal": "I know my doctor’s name and want to find their profile and care location.",
-  "outcome": "A known provider name leads from the website navigation to the result, profile and practice location without a regional gate.",
-  "question": "Can a returning patient find the right doctor without understanding the acquisition?",
+  "goal": "I know my doctor’s name and want the office phone number.",
+  "outcome": "A named-provider search leads to a profile with a prominent office phone number. Care locations remain supporting information; finding the number does not require another page.",
+  "question": "Can a returning patient identify the doctor and call the office directly from the profile?",
   "related": [
    "clinic",
    "nearby",
@@ -58,28 +58,29 @@
     }
    },
    {
-    "title": "Choose the provider’s care location",
-    "note": "The provider profile connects the doctor with Altru Family Medicine Center. The visitor selects that location; scheduling remains in MyChart.",
-    "short": "The provider profile connects the doctor with Altru Family Medicine Center. The visitor selects that location; scheduling remains in MyChart.",
+    "title": "Find the office phone number on the profile",
+    "note": "The phone number is featured directly beneath the provider’s name and specialty. Care locations remain available below; a separate location page is not required to find the number.",
+    "short": "The phone number is featured directly beneath the provider’s name and specialty. Care locations remain available below; a separate location page is not required to find the number.",
     "screen": "known-4",
-    "try": "Selects Altru Family Medicine Center.",
+    "try": "Confirms the provider and office phone number.",
     "demo": {
      "page": "provider:profile:matthew",
      "origin": null,
-     "kind": "click",
-     "value": ""
+     "kind": "read"
     }
    },
    {
-    "title": "Confirm the clinic details",
-    "note": "The location page supplies the clinic identity, public address, contact details, services and provider links.",
-    "short": "The location page supplies the clinic identity, public address, contact details, services and provider links.",
+    "title": "Call the provider’s office",
+    "note": "The visitor selects the phone number shown on the profile. On a phone, the real website would open the calling app. This review illustrates the handoff without placing a call.",
+    "short": "The visitor selects the phone number shown on the profile. On a phone, the real website would open the calling app. This review illustrates the handoff without placing a call.",
     "screen": "known-5",
-    "try": "Reads the clinic name, address and practical details.",
+    "try": "Selects Call Matthew Amundson’s office at 701.795.2000.",
     "demo": {
-     "page": "locations/gf-family",
+     "page": "provider:profile:matthew",
+     "handoff": "Phone call",
      "origin": null,
-     "kind": "read"
+     "kind": "click",
+     "value": ""
     }
    }
   ]
@@ -89,8 +90,8 @@
   "group": "Find a provider",
   "title": "Find providers at a familiar clinic",
   "goal": "I remember my clinic and want to find the providers who practice there.",
-  "outcome": "A familiar clinic becomes a provider filter; the selected clinic stays clear when a provider has several care locations.",
-  "question": "Does the clinic remain visible as context through the provider profile?",
+  "outcome": "A familiar clinic leads through Locations to its location page, then to its providers with the clinic context retained.",
+  "question": "Can a visitor find the familiar clinic, view its providers and confirm that relationship on a profile?",
   "related": [
    "known",
    "place",
@@ -98,11 +99,11 @@
   ],
   "steps": [
    {
-    "title": "Start with Find a Provider on the homepage",
-    "note": "The visitor starts on the website homepage and selects Find a Provider in the main navigation. On a phone, they first open the website menu.",
-    "short": "The visitor starts on the website homepage and selects Find a Provider in the main navigation. On a phone, they first open the website menu.",
+    "title": "Start with Locations on the homepage",
+    "note": "The visitor starts on the website homepage and selects Locations in the main navigation. On a phone, they first open the website menu.",
+    "short": "The visitor starts on the website homepage and selects Locations in the main navigation. On a phone, they first open the website menu.",
     "screen": "clinic-1",
-    "try": "Selects Find a Provider.",
+    "try": "Selects Locations.",
     "demo": {
      "page": "home",
      "origin": null,
@@ -111,28 +112,53 @@
     }
    },
    {
-    "title": "Search by a familiar clinic name",
-    "note": "The visitor types North Clinic. The place suggestion is labeled clearly; selecting it opens the providers who practice there.",
-    "short": "The visitor types North Clinic. The place suggestion is labeled clearly; selecting it opens the providers who practice there.",
+    "title": "Find the familiar clinic in Locations",
+    "note": "The visitor types North Clinic in the location finder and selects View location. A known clinic is a place-first task; it does not require a provider search first.",
+    "short": "The visitor types North Clinic in the location finder and selects View location. A known clinic is a place-first task; it does not require a provider search first.",
     "screen": "clinic-2",
-    "try": "Types “North Clinic”, then selects North Clinic New region · demo · View providers →.",
+    "try": "Types “North Clinic”, then selects View location.",
     "demo": {
-     "page": "provider",
+     "page": "home:modal:clinic",
      "typing": {
-      "selector": "#query",
+      "selector": "#clinic-query",
       "text": "North Clinic"
      },
-     "reveal": "#suggestions",
+     "reveal": "#location-list",
      "origin": null,
      "kind": "click",
      "value": ""
     }
    },
    {
-    "title": "Select a provider at the clinic",
-    "note": "The results carry the selected North Clinic filter. The visitor selects Elena Brooks’s View profile action.",
-    "short": "The results carry the selected North Clinic filter. The visitor selects Elena Brooks’s View profile action.",
+    "title": "Confirm the familiar clinic",
+    "note": "The visitor reaches North Clinic’s own location page. The clinic identity, services and provider connections establish the right place before choosing a doctor.",
+    "short": "The visitor reaches North Clinic’s own location page. The clinic identity, services and provider connections establish the right place before choosing a doctor.",
     "screen": "clinic-3",
+    "try": "Confirms the clinic’s identity.",
+    "demo": {
+     "page": "locations/new-c2",
+     "origin": null,
+     "kind": "read"
+    }
+   },
+   {
+    "title": "View providers at this clinic",
+    "note": "The visitor selects View providers on the clinic’s location page. North Clinic carries into the provider results as a visible filter.",
+    "short": "The visitor selects View providers on the clinic’s location page. North Clinic carries into the provider results as a visible filter.",
+    "screen": "clinic-4",
+    "try": "Selects View providers.",
+    "demo": {
+     "page": "locations/new-c2",
+     "origin": null,
+     "kind": "click",
+     "value": ""
+    }
+   },
+   {
+    "title": "Select a provider who practices here",
+    "note": "The results show providers at North Clinic. The visitor selects Elena Brooks’s View profile action.",
+    "short": "The results show providers at North Clinic. The visitor selects Elena Brooks’s View profile action.",
+    "screen": "clinic-5",
     "try": "Selects View profile for Elena Brooks, MD.",
     "demo": {
      "page": "providers?location=new-c2",
@@ -142,26 +168,13 @@
     }
    },
    {
-    "title": "Open the clinic from the provider profile",
-    "note": "North Clinic stays first among the provider’s care locations because the visitor selected it. The visitor chooses its location link.",
-    "short": "North Clinic stays first among the provider’s care locations because the visitor selected it. The visitor chooses its location link.",
-    "screen": "clinic-4",
-    "try": "Selects North Clinic.",
+    "title": "Review the provider in the clinic context",
+    "note": "The profile confirms the provider and keeps the selected North Clinic first among the care locations. Anonymous phone details will be added once confirmed.",
+    "short": "The profile confirms the provider and keeps the selected North Clinic first among the care locations. Anonymous phone details will be added once confirmed.",
+    "screen": "clinic-6",
+    "try": "Confirms the provider’s relationship to the selected clinic.",
     "demo": {
      "page": "providers?location=new-c2:profile:elena",
-     "origin": null,
-     "kind": "click",
-     "value": ""
-    }
-   },
-   {
-    "title": "Confirm the familiar clinic",
-    "note": "The clinic page connects local services and providers. Address, phone, hours and map details remain withheld for this anonymous example.",
-    "short": "The clinic page connects local services and providers. Address, phone, hours and map details remain withheld for this anonymous example.",
-    "screen": "clinic-5",
-    "try": "Reads the clinic’s identity and available care information.",
-    "demo": {
-     "page": "locations/new-c2",
      "origin": null,
      "kind": "read"
     }
@@ -172,13 +185,13 @@
   "id": "nearby",
   "group": "Find a provider",
   "title": "Find a nearby provider",
-  "goal": "I need a type of care near the patient’s chosen starting location.",
-  "outcome": "An optional starting location prioritizes matching care, while providers in other communities remain discoverable.",
-  "question": "Can visitors use proximity without assuming the nearest provider offers every service?",
+  "goal": "I want care nearby and need to check or update my estimated location.",
+  "outcome": "Approximate IP-based location helps visitors start near them. A visible Change option lets them correct it or choose another community before searching.",
+  "question": "Is the location clearly an estimate, and is changing or choosing it straightforward?",
   "related": [
    "known",
-   "farther",
-   "clinic"
+   "clinic",
+   "place"
   ],
   "steps": [
    {
@@ -195,27 +208,29 @@
     }
    },
    {
-    "title": "Open the city or ZIP control",
-    "note": "The visitor chooses City or ZIP to use the patient’s starting location. It can be a different place from the reviewer’s own location.",
-    "short": "The visitor chooses City or ZIP to use the patient’s starting location. It can be a different place from the reviewer’s own location.",
+    "title": "Check the estimated location and change it if needed",
+    "note": "The site estimates Grand Forks from IP and shows it beside the search. Keeping that estimate needs no action. This example demonstrates a correction: the visitor selects Change to search near another community.",
+    "short": "The site estimates Grand Forks from IP and shows it beside the search. Keeping that estimate needs no action. This example demonstrates a correction: the visitor selects Change to search near another community.",
     "screen": "nearby-2",
-    "try": "Selects All communities.",
+    "try": "Selects Change estimated location: Grand Forks, ND.",
     "demo": {
      "page": "provider",
-     "origin": null,
+     "origin": "gf",
+     "estimatedOrigin": "gf",
      "kind": "click",
      "value": ""
     }
    },
    {
-    "title": "Choose the patient’s starting point",
-    "note": "The visitor explicitly selects the anonymous new-region example. The site does not assume a community or use device geolocation.",
-    "short": "The visitor explicitly selects the anonymous new-region example. The site does not assume a community or use device geolocation.",
+    "title": "Choose the correct starting location",
+    "note": "The visitor can enter a city or ZIP, choose a community, or search without a location. This example replaces the approximate IP estimate with the anonymous new-region community.",
+    "short": "The visitor can enter a city or ZIP, choose a community, or search without a location. This example replaces the approximate IP estimate with the anonymous new-region community.",
     "screen": "nearby-3",
     "try": "Selects New region · demo.",
     "demo": {
      "page": "provider:modal:origin",
-     "origin": null,
+     "origin": "gf",
+     "estimatedOrigin": "gf",
      "kind": "click",
      "value": ""
     }
@@ -476,10 +491,10 @@
   "group": "Explore services and locations",
   "title": "Compare local service offerings",
   "goal": "I understand the service and want to know how care may differ at each location.",
-  "outcome": "The shared explanation connects to explicit local offerings and then the relevant team, without treating provider presence as proof of treatment capability.",
-  "question": "Are onsite, visiting and hospital-based care easy to distinguish?",
+  "outcome": "Approximate IP-based location prioritizes local service offerings without a location-selection gate. Visitors can update the estimate and follow a local offering to its care team.",
+  "question": "Can visitors compare local capabilities using the estimate and see how to change the location?",
   "related": [
-   "farther",
+   "nearby",
    "learn",
    "place"
   ],
@@ -512,64 +527,41 @@
    },
    {
     "title": "Read the heart-care overview",
-    "note": "The shared service page introduces prevention, diagnosis, treatment and recovery before asking the visitor to choose a person or place.",
-    "short": "The shared service page introduces prevention, diagnosis, treatment and recovery before asking the visitor to choose a person or place.",
+    "note": "The service page introduces the care first. An approximate community is estimated from IP; the visitor can change it, without a location gate before learning.",
+    "short": "The service page introduces the care first. An approximate community is estimated from IP; the visitor can change it, without a location gate before learning.",
     "screen": "offerings-3",
     "try": "Reads the shared heart-care introduction.",
     "demo": {
      "page": "services/heart",
-     "origin": null,
+     "origin": "new",
+     "estimatedOrigin": "new",
      "kind": "read"
     }
    },
    {
     "title": "Open Care locations",
-    "note": "When ready to compare places, the visitor selects the website’s Care locations shortcut.",
-    "short": "When ready to compare places, the visitor selects the website’s Care locations shortcut.",
+    "note": "The visitor selects Care locations. Nearby offerings are already prioritized using the approximate IP-based location, with Change location available.",
+    "short": "The visitor selects Care locations. Nearby offerings are already prioritized using the approximate IP-based location, with Change location available.",
     "screen": "offerings-4",
     "try": "Selects Care locations.",
     "demo": {
      "page": "services/heart",
-     "origin": null,
-     "kind": "click",
-     "value": ""
-    }
-   },
-   {
-    "title": "Set a starting location for the comparison",
-    "note": "In Heart care by location, the visitor opens the city or ZIP control. A starting location is optional; this example uses it to explain nearby and farther care.",
-    "short": "In Heart care by location, the visitor opens the city or ZIP control. A starting location is optional; this example uses it to explain nearby and farther care.",
-    "screen": "offerings-5",
-    "try": "Selects Choose city or ZIP.",
-    "demo": {
-     "page": "services/heart",
-     "origin": null,
-     "kind": "click",
-     "value": ""
-    }
-   },
-   {
-    "title": "Choose the patient’s community",
-    "note": "The location picker opens over the service page. The visitor explicitly chooses the anonymous new-region example; it is not assumed or taken from device location.",
-    "short": "The location picker opens over the service page. The visitor explicitly chooses the anonymous new-region example; it is not assumed or taken from device location.",
-    "screen": "offerings-6",
-    "try": "Selects New region · demo.",
-    "demo": {
-     "page": "services/heart:modal:origin",
-     "origin": null,
+     "origin": "new",
+     "estimatedOrigin": "new",
      "kind": "click",
      "value": ""
     }
    },
    {
     "title": "Compare the local offerings",
-    "note": "With the chosen community visible, the visitor compares onsite visits, visiting specialists, testing, rehabilitation and hospital-based care. These sample offerings require Altru’s validation.",
-    "short": "With the chosen community visible, the visitor compares onsite visits, visiting specialists, testing, rehabilitation and hospital-based care. These sample offerings require Altru’s validation.",
-    "screen": "offerings-7",
+    "note": "The approximate new-region location is estimated from IP. Nearby offerings are ready to compare without a location-selection step; Change remains visible if the estimate is wrong. Sample capabilities require Altru’s validation.",
+    "short": "The approximate new-region location is estimated from IP. Nearby offerings are ready to compare without a location-selection step; Change remains visible if the estimate is wrong. Sample capabilities require Altru’s validation.",
+    "screen": "offerings-5",
     "try": "Compares what is offered at each location.",
     "demo": {
      "page": "services/heart",
      "origin": "new",
+     "estimatedOrigin": "new",
      "kind": "read"
     }
    },
@@ -577,11 +569,12 @@
     "title": "Choose heart care at Regional Hospital",
     "note": "The visitor selects Regional Hospital’s View local care link to understand that specific service offering.",
     "short": "The visitor selects Regional Hospital’s View local care link to understand that specific service offering.",
-    "screen": "offerings-8",
+    "screen": "offerings-6",
     "try": "Selects View heart care at Regional Hospital.",
     "demo": {
      "page": "services/heart",
      "origin": "new",
+     "estimatedOrigin": "new",
      "kind": "click",
      "value": ""
     }
@@ -590,11 +583,12 @@
     "title": "Read this location’s service details",
     "note": "The local service page explains how heart care is delivered here, before presenting its related team.",
     "short": "The local service page explains how heart care is delivered here, before presenting its related team.",
-    "screen": "offerings-9",
+    "screen": "offerings-7",
     "try": "Reads the location-specific heart-care offering.",
     "demo": {
      "page": "services/heart/at/new-h1",
-     "origin": null,
+     "origin": "new",
+     "estimatedOrigin": "new",
      "kind": "read"
     }
    },
@@ -602,11 +596,12 @@
     "title": "Open the connected local care team",
     "note": "The visitor scrolls to the local team section and selects View this care team. The service and selected hospital both carry forward.",
     "short": "The visitor scrolls to the local team section and selects View this care team. The service and selected hospital both carry forward.",
-    "screen": "offerings-10",
+    "screen": "offerings-8",
     "try": "Selects View this care team.",
     "demo": {
      "page": "services/heart/at/new-h1",
-     "origin": null,
+     "origin": "new",
+     "estimatedOrigin": "new",
      "kind": "click",
      "value": ""
     }
@@ -615,11 +610,12 @@
     "title": "Choose a provider from that team",
     "note": "The results show the heart-care team at Regional Hospital. The visitor selects Avery Sutton’s View profile action.",
     "short": "The results show the heart-care team at Regional Hospital. The visitor selects Avery Sutton’s View profile action.",
-    "screen": "offerings-11",
+    "screen": "offerings-9",
     "try": "Selects View profile for Avery Sutton, MD.",
     "demo": {
      "page": "providers?service=heart&location=new-h1",
      "origin": "new",
+     "estimatedOrigin": "new",
      "kind": "click",
      "value": ""
     }
@@ -628,193 +624,12 @@
     "title": "Confirm the provider and selected hospital",
     "note": "Regional Hospital remains first on the profile. This illustrative relationship does not assign a procedure to a particular clinician.",
     "short": "Regional Hospital remains first on the profile. This illustrative relationship does not assign a procedure to a particular clinician.",
-    "screen": "offerings-12",
+    "screen": "offerings-10",
     "try": "Checks the selected provider’s Regional Hospital care location.",
     "demo": {
      "page": "providers?service=heart&location=new-h1:profile:avery",
      "origin": "new",
-     "kind": "read"
-    }
-   }
-  ]
- },
- {
-  "id": "farther",
-  "group": "Explore services and locations",
-  "title": "Find specialized care farther away",
-  "goal": "The care I need may be outside my community; I want to understand where it is offered.",
-  "outcome": "A distant matching service stays visible, with the starting location retained and a clear explanation of travel.",
-  "question": "Can someone identify the matching service without a local-only dead end?",
-  "related": [
-   "offerings",
-   "nearby",
-   "place"
-  ],
-  "steps": [
-   {
-    "title": "Start with Services on the homepage",
-    "note": "The visitor starts on the website homepage and selects Services in the main navigation. On a phone, they first open the website menu.",
-    "short": "The visitor starts on the website homepage and selects Services in the main navigation. On a phone, they first open the website menu.",
-    "screen": "farther-1",
-    "try": "Selects Services.",
-    "demo": {
-     "page": "home",
-     "origin": null,
-     "kind": "click",
-     "value": ""
-    }
-   },
-   {
-    "title": "Choose Heart & Vascular Care",
-    "note": "From the open website Services menu, the visitor chooses Heart & Vascular Care.",
-    "short": "From the open website Services menu, the visitor chooses Heart & Vascular Care.",
-    "screen": "farther-2",
-    "try": "Selects Heart & Vascular Care.",
-    "demo": {
-     "page": "home",
-     "origin": null,
-     "kind": "click",
-     "value": ""
-    }
-   },
-   {
-    "title": "Read the heart-care overview",
-    "note": "The shared service page introduces prevention, diagnosis, treatment and recovery before asking the visitor to choose a person or place.",
-    "short": "The shared service page introduces prevention, diagnosis, treatment and recovery before asking the visitor to choose a person or place.",
-    "screen": "farther-3",
-    "try": "Reads the shared heart-care introduction.",
-    "demo": {
-     "page": "services/heart",
-     "origin": null,
-     "kind": "read"
-    }
-   },
-   {
-    "title": "Open Care locations",
-    "note": "When ready to compare places, the visitor selects the website’s Care locations shortcut.",
-    "short": "When ready to compare places, the visitor selects the website’s Care locations shortcut.",
-    "screen": "farther-4",
-    "try": "Selects Care locations.",
-    "demo": {
-     "page": "services/heart",
-     "origin": null,
-     "kind": "click",
-     "value": ""
-    }
-   },
-   {
-    "title": "Set a starting location for the comparison",
-    "note": "In Heart care by location, the visitor opens the city or ZIP control. A starting location is optional; this example uses it to explain nearby and farther care.",
-    "short": "In Heart care by location, the visitor opens the city or ZIP control. A starting location is optional; this example uses it to explain nearby and farther care.",
-    "screen": "farther-5",
-    "try": "Selects Choose city or ZIP.",
-    "demo": {
-     "page": "services/heart",
-     "origin": null,
-     "kind": "click",
-     "value": ""
-    }
-   },
-   {
-    "title": "Choose the patient’s community",
-    "note": "The location picker opens over the service page. The visitor explicitly chooses the anonymous new-region example; it is not assumed or taken from device location.",
-    "short": "The location picker opens over the service page. The visitor explicitly chooses the anonymous new-region example; it is not assumed or taken from device location.",
-    "screen": "farther-6",
-    "try": "Selects New region · demo.",
-    "demo": {
-     "page": "services/heart:modal:origin",
-     "origin": null,
-     "kind": "click",
-     "value": ""
-    }
-   },
-   {
-    "title": "Choose the specific type of care",
-    "note": "The visitor chooses Advanced heart procedures in Type of care. This narrows the comparison by capability rather than assuming every local clinic provides it.",
-    "short": "The visitor chooses Advanced heart procedures in Type of care. This narrows the comparison by capability rather than assuming every local clinic provides it.",
-    "screen": "farther-7",
-    "try": "Chooses “Advanced heart procedures”.",
-    "demo": {
-     "page": "services/heart",
-     "choiceLabel": "Advanced heart procedures",
-     "origin": "new",
-     "kind": "select",
-     "value": "procedures"
-    }
-   },
-   {
-    "title": "Choose the farther matching hospital",
-    "note": "The comparison explains why this sample care may require travel. The visitor selects View local care at Altru Hospital; the chosen starting point is retained.",
-    "short": "The comparison explains why this sample care may require travel. The visitor selects View local care at Altru Hospital; the chosen starting point is retained.",
-    "screen": "farther-8",
-    "try": "Selects View heart care at Altru Hospital.",
-    "demo": {
-     "page": "services/heart?care=procedures",
-     "origin": null,
-     "kind": "click",
-     "value": ""
-    }
-   },
-   {
-    "title": "Confirm care at the destination",
-    "note": "The local service page makes the hospital-based offering explicit. The visitor reads this information before choosing a provider.",
-    "short": "The local service page makes the hospital-based offering explicit. The visitor reads this information before choosing a provider.",
-    "screen": "farther-9",
-    "try": "Reads the destination’s service details.",
-    "demo": {
-     "page": "services/heart/at/gf-hospital",
-     "origin": null,
-     "kind": "read"
-    }
-   },
-   {
-    "title": "See providers connected with this service here",
-    "note": "The visitor selects the provider shortcut on this hospital’s heart-care page. Both the service and hospital carry into the results.",
-    "short": "The visitor selects the provider shortcut on this hospital’s heart-care page. Both the service and hospital carry into the results.",
-    "screen": "farther-10",
-    "try": "Selects See heart care providers here.",
-    "demo": {
-     "page": "services/heart/at/gf-hospital",
-     "origin": null,
-     "kind": "click",
-     "value": ""
-    }
-   },
-   {
-    "title": "Open a provider from the matching hospital team",
-    "note": "The visitor selects Rabeea Aboufakher’s View profile action in the filtered heart-care team.",
-    "short": "The visitor selects Rabeea Aboufakher’s View profile action in the filtered heart-care team.",
-    "screen": "farther-11",
-    "try": "Selects View profile for Rabeea Aboufakher, MD.",
-    "demo": {
-     "page": "providers?service=heart&location=gf-hospital",
-     "origin": "new",
-     "kind": "click",
-     "value": ""
-    }
-   },
-   {
-    "title": "Open the provider’s destination location",
-    "note": "The profile identifies Altru Hospital as the practice location. The visitor selects that link to review practical place details.",
-    "short": "The profile identifies Altru Hospital as the practice location. The visitor selects that link to review practical place details.",
-    "screen": "farther-12",
-    "try": "Selects Altru Hospital.",
-    "demo": {
-     "page": "providers?service=heart&location=gf-hospital:profile:rabeea",
-     "origin": "new",
-     "kind": "click",
-     "value": ""
-    }
-   },
-   {
-    "title": "Review the hospital before traveling",
-    "note": "The hospital page retains the selected starting point and supplies verified public contact and address information. Sample distances and care relationships remain illustrative.",
-    "short": "The hospital page retains the selected starting point and supplies verified public contact and address information. Sample distances and care relationships remain illustrative.",
-    "screen": "farther-13",
-    "try": "Reads the destination hospital’s practical details.",
-    "demo": {
-     "page": "locations/gf-hospital",
-     "origin": "new",
+     "estimatedOrigin": "new",
      "kind": "read"
     }
    }
@@ -969,6 +784,6 @@
   return {path,index:Math.min(Number.isFinite(number)?number-1:0,path.steps.length),invalid:false};
  }
  const reviewURL=(id,index=0)=>'?path='+encodeURIComponent(id)+'&step='+(index+1);
- const api={paths,readReviewState,reviewURL,revision:'3e7448333395'};
+ const api={paths,readReviewState,reviewURL,revision:'80c7895446fe'};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.AltruJourneys=api;
 })(typeof window!=='undefined'?window:this);
