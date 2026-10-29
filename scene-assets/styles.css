@@ -2380,3 +2380,10 @@ body.modal-fallback::before {
   .search-location .chevron { display: block; }
   #query::placeholder { font-size: 13px; }
 }
+
+/* Contact is the primary profile action; locations provide supporting context. */
+.profile-contact{padding:24px 0}
+.profile-contact h3{margin:0 0 8px;font-size:20px;line-height:1.4}
+.profile-contact p{margin:0 0 16px;line-height:1.5}
+.profile-contact .provider-phone{display:inline-flex;align-items:center;min-height:48px;font-size:20px;font-weight:600;white-space:normal}
+.profile-contact .phone-source-note{margin:12px 0 0;font-size:12px;color:#405b54}

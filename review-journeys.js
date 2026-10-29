@@ -704,6 +704,6 @@
   return {path,index:Math.min(Number.isFinite(number)?number-1:0,path.steps.length),invalid:false};
  }
  const reviewURL=(id,index=0)=>'?path='+encodeURIComponent(id)+'&step='+(index+1);
- const api={paths,readReviewState,reviewURL,revision:'bd0976e085e0'};
+ const api={paths,readReviewState,reviewURL,revision:'d3b90523cab3'};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.AltruJourneys=api;
 })(typeof window!=='undefined'?window:this);
