@@ -451,14 +451,13 @@
  {
   "id": "offerings",
   "group": "Explore services and locations",
-  "title": "Compare local service offerings",
-  "goal": "I understand the service and want to know how care may differ at each location.",
-  "outcome": "Approximate IP-based location prioritizes local service offerings without a location-selection gate. Visitors can update the estimate and follow a local offering to its care team.",
-  "question": "Can visitors compare local capabilities using the estimate and see how to change the location?",
+  "title": "Explore care at nearby locations",
+  "goal": "I want to see what care is offered at locations near me.",
+  "outcome": "Care locations shows nearby places and the heart-care services available at each, using an approximate IP-based location. Visitors can browse all care types and open a local offering for more detail.",
+  "question": "Can visitors see what care is offered at nearby locations and understand a selected location’s offering?",
   "related": [
-   "nearby",
-   "learn",
-   "place"
+   "place",
+   "topic"
   ],
   "steps": [
    {
@@ -515,11 +514,11 @@
     }
    },
    {
-    "title": "Compare the local offerings",
-    "note": "The approximate new-region location is estimated from IP. Nearby offerings are ready to compare without a location-selection step; Change remains visible if the estimate is wrong. Sample capabilities require Altru’s validation.",
-    "short": "The approximate new-region location is estimated from IP. Nearby offerings are ready to compare without a location-selection step; Change remains visible if the estimate is wrong. Sample capabilities require Altru’s validation.",
+    "title": "See what each nearby location offers",
+    "note": "The visitor browses nearby locations and the care listed at each, using the approximate IP-based location. All heart care is shown; choosing a care type is optional. Sample offerings require Altru’s validation.",
+    "short": "The visitor browses nearby locations and the care listed at each, using the approximate IP-based location. All heart care is shown; choosing a care type is optional. Sample offerings require Altru’s validation.",
     "screen": "offerings-5",
-    "try": "Compares what is offered at each location.",
+    "try": "Browses the care offered at nearby locations.",
     "demo": {
      "page": "services/heart",
      "origin": "new",
@@ -543,53 +542,12 @@
    },
    {
     "title": "Read this location’s service details",
-    "note": "The local service page explains how heart care is delivered here, before presenting its related team.",
-    "short": "The local service page explains how heart care is delivered here, before presenting its related team.",
+    "note": "The local service page explains the care offered at this location and how it is delivered. The journey ends with the local service information.",
+    "short": "The local service page explains the care offered at this location and how it is delivered. The journey ends with the local service information.",
     "screen": "offerings-7",
-    "try": "Reads the location-specific heart-care offering.",
+    "try": "Reads the care available at this location.",
     "demo": {
      "page": "services/heart/at/new-h1",
-     "origin": "new",
-     "estimatedOrigin": "new",
-     "kind": "read"
-    }
-   },
-   {
-    "title": "Open the connected local care team",
-    "note": "The visitor scrolls to the local team section and selects View this care team. The service and selected hospital both carry forward.",
-    "short": "The visitor scrolls to the local team section and selects View this care team. The service and selected hospital both carry forward.",
-    "screen": "offerings-8",
-    "try": "Selects View this care team.",
-    "demo": {
-     "page": "services/heart/at/new-h1",
-     "origin": "new",
-     "estimatedOrigin": "new",
-     "kind": "click",
-     "value": ""
-    }
-   },
-   {
-    "title": "Choose a provider from that team",
-    "note": "The results show the heart-care team at Regional Hospital. The visitor selects Avery Sutton’s View profile action.",
-    "short": "The results show the heart-care team at Regional Hospital. The visitor selects Avery Sutton’s View profile action.",
-    "screen": "offerings-9",
-    "try": "Selects View profile for Avery Sutton, MD.",
-    "demo": {
-     "page": "providers?service=heart&location=new-h1",
-     "origin": "new",
-     "estimatedOrigin": "new",
-     "kind": "click",
-     "value": ""
-    }
-   },
-   {
-    "title": "Confirm the provider and selected hospital",
-    "note": "Regional Hospital remains first on the profile. This illustrative relationship does not assign a procedure to a particular clinician.",
-    "short": "Regional Hospital remains first on the profile. This illustrative relationship does not assign a procedure to a particular clinician.",
-    "screen": "offerings-10",
-    "try": "Checks the selected provider’s Regional Hospital care location.",
-    "demo": {
-     "page": "providers?service=heart&location=new-h1:profile:avery",
      "origin": "new",
      "estimatedOrigin": "new",
      "kind": "read"
@@ -746,6 +704,6 @@
   return {path,index:Math.min(Number.isFinite(number)?number-1:0,path.steps.length),invalid:false};
  }
  const reviewURL=(id,index=0)=>'?path='+encodeURIComponent(id)+'&step='+(index+1);
- const api={paths,readReviewState,reviewURL,revision:'59179883b470'};
+ const api={paths,readReviewState,reviewURL,revision:'bd0976e085e0'};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.AltruJourneys=api;
 })(typeof window!=='undefined'?window:this);
